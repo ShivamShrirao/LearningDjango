@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ que }}</title>
+</head>
+<body>
+	<h1>{{ que }}</h1>
+	<ul>
+		{% for choice in que.choice_set.all %}
+			<li>{{choice}} -- {{choice.votes}} vote{{choice.vote|pluralize}} </li>
+		{% endfor %}
+	</ul>
+	<a href="{% url 'polls:details' que.id %}">Vote again?</a>
+</body>
+</html>
