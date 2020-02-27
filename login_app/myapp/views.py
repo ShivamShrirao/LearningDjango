@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def hello(request):
 	return render(request,"myapp/hello.html",{})
+
+def base(request):
+	return render(request,"myapp/base.html",{})
