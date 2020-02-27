@@ -6,7 +6,7 @@
 <body>
 	<h1>{{ que }}</h1>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form action="{% url 'polls:vote' que.id}" method="POST">
+	<form action="{% url 'polls:vote' que.id %}" method="POST">
 		{% csrf_token %}
 		{% for choice in que.choice_set.all %}
 			<!-- <label>{{ choice.choice_text }}<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"></label><br> -->

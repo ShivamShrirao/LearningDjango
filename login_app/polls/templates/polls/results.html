@@ -10,6 +10,6 @@
 			<li>{{choice}} -- {{choice.votes}} vote{{choice.vote|pluralize}} </li>
 		{% endfor %}
 	</ul>
-	<a href="{% url 'polls:details' que.id %}">Vote again?</a>
+	<a href="{% url 'polls:detail' que.id %}">Vote again?</a>
 </body>
 </html>
