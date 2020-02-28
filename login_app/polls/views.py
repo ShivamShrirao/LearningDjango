@@ -10,9 +10,10 @@ from .models import Choice,Question
 class IndexView(generic.ListView):
 	template_name = 'polls/index.html'
 	context_object_name = 'q_list'
+	model = Question
 
-	def get_queryset(self):
-		return Question.objects.order_by('-pub_date')
+	# def get_queryset(self):
+	# 	return Question.objects.order_by('-pub_date')
 
 class DetailView(generic.DetailView):
 	model = Question

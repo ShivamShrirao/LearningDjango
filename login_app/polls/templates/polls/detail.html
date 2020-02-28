@@ -9,9 +9,7 @@
 	<form action="{% url 'polls:vote' que.id %}" method="POST">
 		{% csrf_token %}
 		{% for choice in que.choice_set.all %}
-			<!-- <label>{{ choice.choice_text }}<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"></label><br> -->
-			<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-    		<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+			<label><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"> {{ choice.choice_text }}</label><br>
 		{% endfor %}
 	<input type="submit" value="vote">
 	</form>
