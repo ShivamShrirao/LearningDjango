@@ -79,6 +79,11 @@
                 </div>
             </div>
         </nav>
+        {% if messages %}
+            {% for message in messages %}
+                <script>M.toast({html: "{{message}}", classes: 'w3-theme-red rounded', displayLength: 2000});</script>
+            {% endfor %}
+        {% endif %}
         <div class="w3-row-padding w3-stretch w3-padding w3-margin">
             {% block content %}
                 <h1>This is Welcome Page.</h1>

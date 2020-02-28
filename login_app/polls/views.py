@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 from .models import Choice,Question
 
@@ -19,7 +23,19 @@ class HomepageView(generic.ListView):
 	# 	return Question.objects.order_by('-pub_date')
 
 def login_request(request):
-	return render(request,'polls/login.html',{})
+	if request.method == 'POST':
+		form = AuthenticationForm(request=request,data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username,password=password)
+			if user is not None:
+				login(request,user)
+				messages.success(request, f"Logged in as {username}.")
+				return HttpResponseRedirect(reverse('polls:homepage'))
+		messages.error(request, "Invalid username or password!")
+
+	return render(request,'polls/login.html')
 
 class DetailView(generic.DetailView):
 	model = Question
