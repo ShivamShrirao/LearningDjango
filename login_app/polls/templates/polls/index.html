@@ -70,15 +70,17 @@
                 </div>
             </div>
         </nav>
-        {% if q_list %}
-            <ul>
-            {% for que in q_list %}
-                <li><a href="{% url 'polls:detail' que.id %}">{{que.question_text}}</a></li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No polls are available.</p>
-        {% endif %}
+        {% block content %}
+            {% if q_list %}
+                <ul>
+                {% for que in q_list %}
+                    <li><a href="{% url 'polls:detail' que.id %}">{{que.question_text}}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+        {% endblock %}
     </body>
 </html>
 <body>

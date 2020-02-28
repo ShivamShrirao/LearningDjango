@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ que }}</title>
-</head>
-<body>
-	<h1>{{ que }}</h1>
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form action="{% url 'polls:vote' que.id %}" method="POST">
-		{% csrf_token %}
-		{% for choice in que.choice_set.all %}
-			<label><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"> {{ choice.choice_text }}</label><br>
-		{% endfor %}
-	<input type="submit" value="vote">
-	</form>
-</body>
-</html>
+{% extends "polls/index.html" %}
+
+{% block content %}
+<h1>{{ que }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'polls:vote' que.id %}" method="POST">
+	{% csrf_token %}
+	{% for choice in que.choice_set.all %}
+		<label><input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"> {{ choice.choice_text }}</label><br>
+	{% endfor %}
+<input type="submit" value="vote">
+</form>
+{% endblock %}

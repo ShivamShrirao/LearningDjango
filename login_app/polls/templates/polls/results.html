@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{ que }}</title>
-</head>
-<body>
-	<h1>{{ que }}</h1>
-	<ul>
-		{% for choice in que.choice_set.all %}
-			<li>{{choice}} -- {{choice.votes}} vote{{choice.vote|pluralize}} </li>
-		{% endfor %}
-	</ul>
-	<a href="{% url 'polls:detail' que.id %}">Vote again?</a>
-</body>
-</html>
+{% extends "polls/index.html" %}
+
+{% block content %}
+<h1>{{ que }}</h1>
+<ul>
+	{% for choice in que.choice_set.all %}
+		<li>{{choice}} -- {{choice.votes}} vote{{choice.vote|pluralize}} </li>
+	{% endfor %}
+</ul>
+<a href="{% url 'polls:detail' que.id %}">Vote again?</a>
+{% endblock %}
