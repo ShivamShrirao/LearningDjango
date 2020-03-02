@@ -21,49 +21,38 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
 <script>
-function w3_open() {
-  $(this).toggleClass('open');
-  document.getElementById("main").style.marginLeft = "15%";
-  document.getElementById("mySidebar").style.width = "15%";
-  document.getElementById("mySidebar").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
+function togNav() {
+    $('#nav-icon1').toggleClass('open');
+    $('#mySidebar').toggleClass('open');
+    $('#main').toggleClass('open');
 }
 </script>
 </head>
     <body class="w3-theme">
         <!-- Sidebar -->
-        <div class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left" style="display:none" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large" style="text-align: right;" onclick="w3_close()">
-                <p style="text-align:left;">
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" onclick="togNav()" style="text-align: left;">
                     Close
-                    <span style="float:right;">
-                        X
-                    </span>
-                </p>
-            </button><br>
+            </a><br>
             <img class="w3-circle center-block" src="{% static 'polls/images/user.png' %}" height="150" width="150" style="background:white;">
-            <a href="#" class="w3-bar-item w3-button" style="text-align: center;">{{request.user.username}}</a>
-            <a href="#" class="w3-bar-item w3-button">Link 2</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+            <a href="#" >{{request.user.username}}</a>
+            <a href="#" >About</a>
+            <a href="#" >Contact</a>
         </div>
     <div id="main">
         <nav class="navbar navbar-inverse ">
             <div class="container-fluid">
                 <!--header-->
                 <div class="navbar-header">
-                    <!-- <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()"> -->
-                        <div id="nav-icon1" onclick="w3_open()">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                        </div>
-                    <!-- </button> -->
+                    <!-- <button id="openNav" class="w3-button w3-xlarge" onclick="togNav()"> -->
+                    <div id="nav-icon1" onclick="togNav()" style="z-index: 100">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <!-- &#9776;</button> -->
                 </div>
-                <!--items&#9776;-->
+                <!--items-->
                 <div class="collapse navbar-collapse" id="topNavBar">
                     <ul class="nav navbar-nav">
                         <li>
