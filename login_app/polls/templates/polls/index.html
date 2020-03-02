@@ -26,13 +26,19 @@ function togNav() {
     $('#mySidebar').toggleClass('open');
     $('#main').toggleClass('open');
     $('#navBarid').toggleClass('open');
+    $('#closetxt').toggleClass('open');
 }
 </script>
 </head>
     <body class="w3-theme">
         <!-- Sidebar -->
+        <div id="nav-icon1" onclick="togNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" onclick="togNav()" style="text-align: left;">
+            <a href="javascript:void(0)" onclick="togNav()" style="text-align: right;" id="closetxt">
                     Close
             </a><br>
             <img class="w3-circle center-block" src="{% static 'polls/images/user.png' %}" height="150" width="150" style="background:white;">
@@ -43,16 +49,6 @@ function togNav() {
     <div id="main">
         <nav class="navbar navbar-inverse" id="navBarid">
             <div class="container-fluid">
-                <!--header-->
-                <div class="navbar-header">
-                    <!-- <button id="openNav" class="w3-button w3-xlarge" onclick="togNav()"> -->
-                    <div id="nav-icon1" onclick="togNav()" style="z-index: 100">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <!-- &#9776;</button> -->
-                </div>
                 <!--items-->
                 <div class="collapse navbar-collapse" id="topNavBar">
                     <ul class="nav navbar-nav">
