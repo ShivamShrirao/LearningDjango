@@ -6,18 +6,6 @@
     <h2 class="fit-content center">Register</h2>
     <form method="POST">
         {% csrf_token %}    <!--requirement of django; here for security-->
-      <!--   {% for field in form %}
-            <p>
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
-            </p>
-        {% endfor %} -->
         <!--name field-->
         <div class=" w3l-form-group">
             <div class="group">
