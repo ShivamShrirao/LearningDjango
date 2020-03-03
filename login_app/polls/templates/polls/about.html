@@ -1,0 +1,13 @@
+{% extends "polls/index.html" %}
+
+{% block content %}
+	{% if details %}
+	    <ul>
+	    {% for que in details %}
+	        <li>{{que}}</li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No polls are available.</p>
+	{% endif %}
+{% endblock %}

@@ -23,9 +23,9 @@
             <div class="group">
                 <i class="material-icons icon">face</i>
                 <input id="id_first_name" type="text" placeholder="First name" name="first_name"
-                       {% if first_name %}value="{{ first_name.0 }}"{% endif %} required/>
+                       {% if first_name %}value="{{ first_name }}"{% endif %} required/>
                 <input id="id_last_name" type="text" placeholder="Last name" name="last_name"
-                       {% if last_name %}value="{{ last_name.0 }}"{% endif %}/>
+                       {% if last_name %}value="{{ last_name }}"{% endif %}/>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
             <div class="group">
                 <i class="material-icons icon">email</i>
                 <input id="id_email" type="text" placeholder="E-Mail" name="email"
-                       {% if email %}value="{{ email.0 }}"{% endif %} required/>
+                       {% if email %}value="{{ email }}"{% endif %} required/>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="group">
                 <i class="material-icons icon">account_circle</i>
                 <input id="id_username" type="text" placeholder="Username" name="username"
-                       {% if username %}value="{{ username.0 }}"{% endif %} required/>
+                       {% if username %}value="{{ username }}"{% endif %} required/>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
             <div class="group">
                 <i class="material-icons icon">lock_open</i>
                 <input id="id_password1" type="password" placeholder="Password" name="password1"
-                       {% if password1 %}value="{{ password1.0 }}"{% endif %} required/>
+                       {% if password1 %}value="{{ password1 }}"{% endif %} required/>
             </div>
         </div>
 
