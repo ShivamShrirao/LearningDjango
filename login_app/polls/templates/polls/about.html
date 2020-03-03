@@ -1,13 +1,14 @@
 {% extends "polls/index.html" %}
 
 {% block content %}
+	<h1>Profile</h1>
 	{% if details %}
 	    <ul>
-	    {% for que in details %}
-	        <li>{{que}}</li>
-	    {% endfor %}
+	        <li>Username: {{details.username}}</li>
+	        <li>Name: {{details.first_name}} {{details.last_name}}</li>
+	        <li>Email: {{details.email}}</li>
 	    </ul>
 	{% else %}
-	    <p>No polls are available.</p>
+	    <p>No info are available.</p>
 	{% endif %}
 {% endblock %}

@@ -26,7 +26,7 @@ class AboutView(LoginRequiredMixin,generic.ListView):
 	model = User
 
 	def get_queryset(self):
-		return User.objects.values(username=self.request.user)
+		return User.objects.get(username=self.request.user)
 
 class HomepageView(LoginRequiredMixin,generic.ListView):
 	login_url = '/polls/login/'
