@@ -10,7 +10,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Choice,Question
+from polls.models import Choice,Question
+from polls.forms import NewUserForm
 
 # Create your views here.
 
@@ -79,3 +80,32 @@ def logout_request(request):
 	logout(request)
 	messages.info(request,"Logged out successfully!")
 	return redirect('polls:login')
+
+def register_request(request):
+	nextp = request.GET.get('next')
+	if not is_safe_url(nextp,allowed_hosts=settings.ALLOWED_HOSTS,require_https=request.is_secure()):
+		nextp = 'polls:index'
+	if request.user.is_authenticated:
+		return redirect(nextp)
+	if request.method == 'POST':
+		form = NewUserForm(request.POST)
+		print(form)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password1')
+			user = authenticate(username=username,password=password)
+			if user is not None:
+				login(request,user)
+				messages.success(request, f"Logged in as {username}.")
+				return redirect(nextp)
+			else:
+				messages.error(request, "User is None!")
+		else:
+			messages.error(request, "Form Invalid!")
+	else:
+		form=NewUserForm()
+	for field in form:
+		for error in field.errors:
+			messages.error(request,error)
+	return render(request,'polls/register.html',{'form':form})

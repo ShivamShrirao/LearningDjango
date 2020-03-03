@@ -1,7 +1,7 @@
 {% extends "polls/index.html" %}
 
 {% block content %}
-<div class=" w3l-login-form" style="max-width: 400px">
+<div class=" w3l-login-form" style="max-width: 400px; margin-top: 10%;">
 <h2 class="fit-content center">Login Here</h2>
 <form action="#" method="POST">
     {% csrf_token %}
@@ -20,10 +20,10 @@
         </div>
     </div>
 
-    <button class="button button2" type="submit" style="margin-top: 10%">Login</button>    <!--submit button-->
+    <button class="button button2" type="submit" style="margin-top: 10%">Login</button>
 </form>
 <p class=" w3l-register-p">
-    Don't have an account?<a href="{% url 'polls:index' %}" class="register"> Register</a>
+    Don't have an account?<a href="{% url 'polls:register' %}" class="register"> Register</a>
 </p>
 </div>
 {% endblock %}

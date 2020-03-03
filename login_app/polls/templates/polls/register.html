@@ -1,0 +1,71 @@
+{% extends "polls/index.html" %}
+
+{% block content %}
+<!--suppress HtmlFormInputWithoutLabel -->
+<div class=" w3l-login-form" style="max-width: 500px; margin-top: 6%;">
+    <h2 class="fit-content center">Register</h2>
+    <form method="POST">
+        {% csrf_token %}    <!--requirement of django; here for security-->
+      <!--   {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %} -->
+        <!--name field-->
+        <div class=" w3l-form-group">
+            <div class="group">
+                <i class="material-icons icon">face</i>
+                <input id="id_first_name" type="text" placeholder="First name" name="first_name"
+                       {% if first_name %}value="{{ first_name.0 }}"{% endif %} required/>
+                <input id="id_last_name" type="text" placeholder="Last name" name="last_name"
+                       {% if last_name %}value="{{ last_name.0 }}"{% endif %}/>
+            </div>
+        </div>
+
+        <!--email field-->
+        <div class=" w3l-form-group">
+            <div class="group">
+                <i class="material-icons icon">email</i>
+                <input id="id_email" type="text" placeholder="E-Mail" name="email"
+                       {% if email %}value="{{ email.0 }}"{% endif %} required/>
+            </div>
+        </div>
+
+        <hr>
+
+        <!--username field-->
+        <div class=" w3l-form-group">
+            <div class="group">
+                <i class="material-icons icon">account_circle</i>
+                <input id="id_username" type="text" placeholder="Username" name="username"
+                       {% if username %}value="{{ username.0 }}"{% endif %} required/>
+            </div>
+        </div>
+
+        <!--password field-->
+        <div class=" w3l-form-group">
+            <div class="group">
+                <i class="material-icons icon">lock_open</i>
+                <input id="id_password1" type="password" placeholder="Password" name="password1"
+                       {% if password1 %}value="{{ password1.0 }}"{% endif %} required/>
+            </div>
+        </div>
+
+        <!--password re-enter field-->
+        <div class=" w3l-form-group">
+            <div class="group">
+                <i class="material-icons icon">lock_open</i>
+                <input id="id_password2" type="password" placeholder="Re-enter Password" name="password2" required/>
+            </div>
+        </div>
+        <button class="button button2" type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}
